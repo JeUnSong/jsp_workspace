@@ -46,6 +46,7 @@ public class JDBConnect {
 			e.printStackTrace();
 		}
 	}
+	
 	// 두번째 생성자
 	public JDBConnect(String driver, String url, String id, String pwd) {
 		try {
