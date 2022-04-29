@@ -193,7 +193,7 @@ public class BoardDAO extends JDBConnect {
 	public void updateVisitCount(String num) {
 		// 쿼리문 준비
 		String query = "UPDATE board SET "
-					 + " visitcount=cisitcount+1 "
+					 + " visitcount=visitcount+1 "
 					 + " WHERE num=?";
 		
 		try {
