@@ -1,13 +1,31 @@
 <%@ page import="model1.board.BoardDAO" %>
 <%@ page import="model1.board.BoardDTO" %>
+<%@ page import="utils.CookieManager" %>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <%
 String num = request.getParameter("num"); // 일련번호 받기
-
 BoardDAO dao = new BoardDAO(application); // DAO 생성
-dao.updateVisitCount(num);				  // 조회수 증가
 BoardDTO dto = dao.selectView(num);       // 게시물 가져오기
+
+
+
+Cookie[] cookies = request.getCookies();
+int visitor = 0;
+
+for(Cookie cookie : cookies) {
+	if(cookie.getName().equals("visit")){
+		visitor = 1;
+	}
+}
+if(visitor == 0){
+	Cookie cookie1 = new Cookie("visit", "중복");
+	cookie1.setPath("View.jsp?num="+dto.getNum());
+	response.addCookie(cookie1);
+	dao.updateVisitCount(num);				  // 조회수 증가
+}else{
+	System.out.println("중복조회");
+}
 dao.close();							  // DB 연결 해제
 %>
 <!DOCTYPE html>

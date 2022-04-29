@@ -10,6 +10,10 @@
 // DAO를 생성해 DB에 연결
 BoardDAO dao = new BoardDAO(application);
 
+Cookie kc = new Cookie("visit", null) ; 
+kc.setMaxAge(0) ; 
+response.addCookie(kc) ;
+
 // 사용자가 입력한 검색 조건을 Map에 저장
 Map<String, Object> param = new HashMap<String, Object>();
 
@@ -43,6 +47,8 @@ param.put("end", end);
 
 List<BoardDTO> boardLists = dao.selectListPage(param);  // 게시물 목록 받기
 dao.close();  // DB 연결 닫기
+
+
 %>
 <!DOCTYPE html>
 <html>
