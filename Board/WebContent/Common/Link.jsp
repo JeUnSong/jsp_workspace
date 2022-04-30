@@ -11,7 +11,7 @@
 		<% } %>
 
 		<span style="padding-left:20px ">
-		<a href="../PagingBoard/List.jsp">게시판(페이징O)</a>
+		<a href="List.jsp">게시판(페이징O)</a>
 		</span>
 		</td>
 	</tr>
