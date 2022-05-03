@@ -5,31 +5,44 @@
 <html>
 <head>
 <meta charset="UTF-8">
+
+<!-- 부트스트랩 CDN ----------------------------------------------------------------------------------->
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.1/dist/css/bootstrap.min.css">
+<script src="https://cdn.jsdelivr.net/npm/jquery@3.6.0/dist/jquery.slim.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.1/dist/js/bootstrap.bundle.min.js"></script>
+<!-- 부트스트랩 CDN 끝 -->
+
 <title>파일 첨부형 게시판</title>
 <style>a{text-decoration: none;}</style>
 </head>
 <body>
+<div class="container">
 	<h2>파일 첨부형 게시판 - 목록 보기(List)</h2>
-	
+	<br/>
 	<!-- 검색 폼 -->
 	<form method="get">
-	<table border="1" width="90%">
-	<tr>
-		<td align="center">
-			<select name="searchField">
-				<option value="title">제목</option>
-				<option value="content">내용</option>
-			</select>
-			<input type="text" name="searchWord" />
-			<input type="submit" value="검색하기" />
-		</td>
-	</tr>
-	</table>
+		<div class="container">
+			<div class="row">
+				<div class="col">
+					<select name="searchField">
+						<option value="title">제목</option>
+						<option value="content">내용</option>
+					</select>
+				</div>
+				<div class="col">
+					<input type="text" class="form-control" name="searchWord" />
+				</div>
+				<div class="col">
+					<input type="submit" class="btn btn-secondary" value="검색하기" />
+				</div>
+			</div>
+		</div>
 	</form>
-
 	<!-- 목록 테이블 -->
-	<table border="1" width="90%">
-		<tr>
+	<table  class="table">
+		<tr class="thead-dark" align="center">
 			<th width="10%">번호</th>
 			<th width="*">제목</th>
 			<th width="15%">작성자</th>
@@ -69,15 +82,16 @@
 	</table>
 	
 	<!-- 하단 메뉴(바로가기, 글쓰기) -->
-	<table border="1" width="90%">
-		<tr align="center">
-			<td>
+	<div>
+		<div align="center">
+			<div>
 				${ map.pagingImg }
-			</td>
-			<td width="100">
-				<button type="button" onclick="location.href='../mvcboard/write.do';">글쓰기</button>
-			</td>
-		</tr>
-	</table>
+			</div>
+			<div>
+				<button type="button" class="btn btn-secondary" onclick="location.href='../mvcboard/write.do';">글쓰기</button>
+			</div>
+		</div>
+	</div>
+</div>
 </body>
 </html>
